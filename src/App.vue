@@ -1,14 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FooterComponent from '@components/FooterComponent.vue'
+import HeaderComponent from '@components/HeaderComponent.vue'
+</script>
 
 <template>
-  <h1>App</h1>
-
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
-  </nav>
-
+  <HeaderComponent />
   <RouterView />
+  <FooterComponent />
 </template>
 
 <style scoped></style>
