@@ -1,0 +1,26 @@
+name: web-project
+
+services:
+  # region Production
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-project:prod
+    ports:
+      - 80:80
+    profiles:
+      - prod
+  # endregion Production
+
+  # region Development
+  web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: web-project:dev
+    ports:
+      - 8080:8080
+    profiles:
+      - dev
+  # endregion
