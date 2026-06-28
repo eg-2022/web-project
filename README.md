@@ -1,73 +1,69 @@
-# .
+# web-project
 
-This template should help get you started developing with Vue 3 in Vite.
+Proyecto web estático hecho con Vue
 
-## Recommended IDE Setup
+## Índice
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [web-project](#web-project)
+  - [Índice](#índice)
+  - [Pasos previos](#pasos-previos)
+    - [Windows](#windows)
+    - [Linux](#linux)
+  - [Indicaciones](#indicaciones)
+    - [Desarrollo](#desarrollo)
+    - [Producción](#producción)
 
-## Recommended Browser Setup
+## Pasos previos
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### Windows
 
-## Type Support for `.vue` Imports in TS
+1. Instalar la extension oficial de Microsoft, [DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), el cual permite programar desde contenedores.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+> [!TIP]
+> Se puede instalar la extensión presionando **Ctrl + P**, e ingresando el siguiente comando en la barra lateral vertical:
+>
+> ```
+> ext install ms-vscode-remote.remote-containers
+> ```
 
-## Customize configuration
+2. Tener instalado `WSL 2` y `Docker Desktop` para poder programar desde los contenedores, así se garantiza que todos tengan el mismo entorno para programar.
+3. Abrir contenedor desde VS Code.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Linux
 
-## Project Setup
+1. Instalar la extension oficial de Microsoft, [DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), el cual permite programar desde contenedores.
 
-```sh
-pnpm install
+> [!NOTE]
+> Utilizar la versión oficial de VS Code, no se recomienda usar la versión OSS de VS Code o Codium, al no ser compatibles con la extensión oficial de Microsoft.
+
+> [!TIP]
+> Se puede instalar la extensión presionando **Ctrl + P**, e ingresando el siguiente comando en la barra lateral vertical:
+>
+> ```
+> ext install ms-vscode-remote.remote-containers
+> ```
+
+2. Instalar Docker desde el gestor de paquetes desde la distribución que se esté utilizando, por medio de la terminal.
+3. Una vez instalado, agregar al usuario en el que se haya iniciado sesión, al grupo `docker` con el siguiente comando:
+
+```bash
+sudo usermod -aG docker $USER
 ```
 
-### Compile and Hot-Reload for Development
+## Indicaciones
 
-```sh
-pnpm dev
+### Desarrollo
+
+Para desplegar el proyecto en modo de desarrollo, utilizar el siguiente comando:
+
+```bash
+docker compose --profile dev up
 ```
 
-### Type-Check, Compile and Minify for Production
+### Producción
 
-```sh
-pnpm build
-```
+Para desplegar el proyecto en modo de producción, utilizar el siguiente comando:
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-pnpm build
-
-# Runs the end-to-end tests
-pnpm test:e2e
-# Runs the tests only on Chromium
-pnpm test:e2e --project=chromium
-# Runs the tests of a specific file
-pnpm test:e2e tests/example.spec.ts
-# Runs the tests in debug mode
-pnpm test:e2e --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
+```bash
+docker compose --profile prod up
 ```
